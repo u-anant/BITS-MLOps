@@ -20,9 +20,8 @@ class IrisData(BaseModel):
 
 @app.post("/predict")
 def predict(data: IrisData):
-    input_data = np.array(
-        [[data.sepal_length, data.sepal_width, data.petal_length, data.petal_width]]
-    )
+    input_data = np.array([[data.sepal_length, data.sepal_width,
+                            data.petal_length, data.petal_width]])
     prediction = model.predict(input_data)
     return {"prediction": int(prediction[0])}
 
